@@ -1,0 +1,542 @@
+/* ZenFlow Global Styles - 禅流全局样式 (科幻黑白风格) */
+
+/* CSS Variables for consistent theming - 科幻黑白主题 */
+:root {
+  --primary-bg: #0a0a0a;
+  --secondary-bg: #1a1a1a;
+  --tertiary-bg: #2a2a2a;
+  --card-background: rgba(26, 26, 26, 0.95);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --accent-color: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.2);
+  --border-radius: 4px;
+  --border-radius-small: 2px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-button: 0 2px 10px rgba(255, 255, 255, 0.1);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --glow-effect: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Global reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  line-height: 1.5;
+  background: var(--primary-bg);
+  color: var(--text-primary);
+}
+
+/* Main page container with sci-fi background */
+.zen-page-container {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    var(--primary-bg);
+  padding-bottom: 80px;
+  position: relative;
+}
+
+.zen-page-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+  background-size: 100px 100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content wrapper with responsive width */
+.zen-content-wrapper {
+  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero section styles - 科幻风格 */
+.zen-hero-section {
+  text-align: center;
+  padding: 20px 0 25px 0;
+  color: var(--text-primary);
+}
+
+.zen-app-logo {
+  margin-bottom: 12px;
+}
+
+.zen-logo-circle {
+  width: 60px;
+  height: 60px;
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glow-effect);
+  position: relative;
+}
+
+.zen-logo-circle::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: var(--border-radius);
+  z-index: -1;
+}
+
+.zen-logo-text {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+}
+
+.zen-page-title {
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.zen-page-subtitle {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin: 0 0 3px 0;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* 移动端样式调整 */
+@media (max-width: 480px) {
+  .zen-content-wrapper {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .zen-hero-section {
+    padding: 15px 0 20px 0;
+  }
+
+  .zen-app-logo {
+    margin-bottom: 8px;
+  }
+
+  .zen-logo-text {
+    font-size: 32px;
+  }
+
+  .zen-page-title {
+    font-size: 2.5rem;
+    margin: 0 0 4px 0;
+    line-height: 1.1;
+  }
+
+  .zen-page-subtitle {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .feature-list {
+    gap: 8px;
+  }
+
+  .feature-item {
+    padding: 10px;
+  }
+}
+
+/* 桌面端样式 */
+@media (min-width: 769px) {
+  .zen-content-wrapper {
+    padding: 40px 24px;
+    max-width: 1200px;
+  }
+
+  .zen-hero-section {
+    padding: 25px 0 30px 0;
+  }
+
+  .zen-feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* Card styles - 科幻风格 */
+.zen-card {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--card-border);
+  animation: slideUp 0.6s ease-out;
+  position: relative;
+}
+
+.zen-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.zen-card-header {
+  background: var(--tertiary-bg);
+  padding: 20px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.zen-card-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.zen-card-content {
+  padding: 24px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.zen-card-content p {
+  margin: 0 0 20px 0;
+  font-size: 1rem;
+}
+
+/* Button styles - 科幻风格 */
+.zen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 300;
+  transition: var(--transition);
+  box-shadow: var(--shadow-button);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.zen-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.zen-btn:hover::before {
+  left: 100%;
+}
+
+.zen-btn:hover {
+  background: var(--tertiary-bg);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--glow-effect);
+}
+
+.zen-btn-icon {
+  font-size: 1.1rem;
+}
+
+.zen-btn-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.zen-btn:hover .zen-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Feature list styles - 科幻风格 */
+.zen-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zen-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--card-border);
+  border-left: 2px solid var(--accent-color);
+}
+
+.zen-feature-icon {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* Input styles - 科幻风格 */
+.zen-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  background: var(--secondary-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.zen-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+  background: var(--tertiary-bg);
+}
+
+.zen-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Navigation container */
+.zen-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--card-background);
+  border-top: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.zen-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .zen-content-wrapper {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .zen-hero-section {
+    padding: 30px 0;
+  }
+
+  .zen-page-title {
+    font-size: 2rem;
+  }
+
+  .zen-logo-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .zen-logo-text {
+    font-size: 24px;
+  }
+
+  .zen-card-content {
+    padding: 20px;
+  }
+
+  .zen-feature-list {
+    gap: 8px;
+  }
+
+  .zen-feature-item {
+    padding: 10px;
+  }
+}
+
+/* Tablet responsive styles */
+@media (min-width: 481px) and (max-width: 768px) {
+  .zen-content-wrapper {
+    padding: 24px;
+    max-width: 90%;
+  }
+
+  .zen-hero-section {
+    padding: 40px 0;
+  }
+
+  .zen-feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+/* Desktop responsive styles */
+@media (min-width: 769px) {
+  .zen-content-wrapper {
+    padding: 40px 24px;
+    max-width: 1200px;
+  }
+
+  .zen-hero-section {
+    padding: 60px 0;
+  }
+
+  .zen-feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .zen-card {
+    margin-bottom: 24px;
+  }
+
+  .zen-card-content {
+    padding: 32px;
+  }
+}
+
+/* Large desktop responsive styles */
+@media (min-width: 1200px) {
+  .zen-content-wrapper {
+    padding: 50px 40px;
+    max-width: 1400px;
+  }
+
+  .zen-hero-section {
+    padding: 80px 0;
+  }
+
+  .zen-page-title {
+    font-size: 3rem;
+  }
+
+  .zen-page-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .zen-feature-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Utility classes */
+.zen-text-center {
+  text-align: center;
+}
+
+.zen-mb-20 {
+  margin-bottom: 20px;
+}
+
+.zen-mt-20 {
+  margin-top: 20px;
+}
+
+.zen-flex {
+  display: flex;
+}
+
+.zen-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zen-gap-12 {
+  gap: 12px;
+}
+
+/* 科幻特效类 */
+.zen-glow {
+  box-shadow: var(--glow-effect);
+}
+
+.zen-scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.zen-scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
