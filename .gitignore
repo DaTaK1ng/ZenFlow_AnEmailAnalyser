@@ -4,8 +4,13 @@ npm-debug.log*
 
 # 环境变量（重要！包含API密钥）
 .env
+.env.*
 .env.local
 .env.production
+.env.save
+backEnd/.env
+backEnd/.env.*
+backEnd/.env.save
 
 # 临时文件
 backEnd/tmp/
